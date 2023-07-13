@@ -14,7 +14,7 @@
 
         //getter e setter
         public function setAllegato($allegato){
-            $this->$allegato;
+            $this->allegato = $allegato;
         }
 
         public function getAllegato(){
