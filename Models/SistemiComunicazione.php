@@ -6,6 +6,7 @@
         private $oggetto;
         private $contenuto;
 
+        //settiamo il costruttore
         public function __construct($mittente, $destinatario, $oggetto, $contenuto){
             $this->mittente = $mittente;
             $this->destinatario = $destinatario;

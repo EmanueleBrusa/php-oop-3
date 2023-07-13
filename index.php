@@ -1,5 +1,5 @@
 <?php
-    //usiamo il require_once per evitare eventuali errori
+    //usiamo il require_once per evitare eventuali errori di ripetizione
     require_once __DIR__.'/Models/SistemiComunicazione.php';
 
     $comm = new SistemiComunicazione('Fabrizio', 'Antonello', 'Saluto', 'Ciao Antonello');
