@@ -4,7 +4,9 @@
     require_once __DIR__.'/Models/Email.php';
     require_once __DIR__.'/Models/Allegato.php';
     require_once __DIR__.'/Models/SMS.php';
+    require_once __DIR__.'/Models/NotificaPush.php';
 
+    //sistemi di comunicazione
     $comm = new SistemiComunicazione('Giangiorgio', 'Fumagalli', 'Saluto', 'Ciao Fumagalli');
 
     //var_dump($comm);
@@ -15,7 +17,9 @@
     echo "Oggetto: ".$comm->getOggetto()."<br/>";
     echo "Contenuto: ".$comm->getContenuto()."<br/>";
     echo "Stato invio: ".$comm->invio()."<br/>";
+    echo "Suoneria: ".SistemiComunicazione::$suoneria."<br/>";
 
+    //email
     $email = new Email('emanuelebrusa@hotmail.it', 'pietropietra@hotmail.it', 'Email test', 'Contenuto Email per Pietro', true);
 
     echo "<hr>";
@@ -24,6 +28,7 @@
     echo "Oggetto: ".$email->getOggetto()."<br/>";
     echo "Contenuto: ".$email->getContenuto()."<br/>";
     echo "Notifica Consegna: ".$email->getNotificaConsegna()."<br/>";
+    echo "Suoneria: ".Email::$suoneria."<br/>";
     /*oppure:
     if($email->getNotificaConsegna()){
         echo "L'email è stata consegnata correttamente al destinatario";
@@ -46,6 +51,7 @@
     echo "Destinatario: ".$email_2->getDestinatario()."<br/>";
     echo "Oggetto: ".$email_2->getOggetto()."<br/>";
     echo "Contenuto: ".$email_2->getContenuto()."<br/>";
+    echo "Suoneria: ".Email::$suoneria."<br/>";
     //echo "Notifica Consegna: ".$email_2->getNotificaConsegna()."<br/>";
     if($email_2->getNotificaConsegna()){
         echo "L'email è stata consegnata correttamente al destinatario <br/>";
@@ -66,6 +72,7 @@
     echo "Destinatario: ".$sms->getDestinatario()."<br/>";
     echo "Oggetto: ".$sms->getOggetto()."<br/>";
     echo "Contenuto: ".$sms->getContenuto()."<br/>";
+    echo "Suoneria: ".SMS::$suoneria."<br/>";
     //echo "Notifica Consegna: ".$email_2->getNotificaConsegna()."<br/>";
     if($sms->getNotificaLettura()){
         echo "Il messaggio è stato letto<br/>";
@@ -80,6 +87,18 @@
         echo "Il messaggio non accetta risposte <br/>";
     }
     echo "Stato invio: ".$sms->invio()."<br/>";
+
+    //notifica push
+    $notifica_push = new NotificaPush('Emanuele', 'Guanciotto Gualtieri', 'Notifica push per l\'app di Guanciotto', 'Contenuto della notifica push per l\'app di Guanciotto', true, 'scusate, non ho sbatta di metterla');
+    echo "<hr>";
+    echo "Mittente: ".$notifica_push->getMittente()."<br>";
+    echo "Destinatario: ".$notifica_push->getDestinatario()."<br/>";
+    echo "Oggetto: ".$notifica_push->getOggetto()."<br/>";
+    echo "Contenuto: ".$notifica_push->getContenuto()."<br/>";
+    echo "Suoneria: ".NotificaPush::$suoneria."<br/>";
+    //proviamo l'operatore ternario 
+    echo $notifica_push->getVisibile() ? 'La notifica push è visibile<br/>' : 'La notifica push è nacosta<br/>';
+    echo "Icona: ".$notifica_push->getIcona()."<br/>";
 ?>
 
 <!DOCTYPE html>

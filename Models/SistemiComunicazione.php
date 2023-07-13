@@ -5,7 +5,7 @@
         private $destinatario;
         private $oggetto;
         private $contenuto;
-
+        public static $suoneria = 'DRIIN';
         //settiamo il costruttore
         public function __construct($mittente, $destinatario, $oggetto, $contenuto){
             $this->mittente = $mittente;
